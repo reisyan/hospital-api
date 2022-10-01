@@ -9,19 +9,16 @@ import java.util.Date;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table(name = "TBL_MEDICO")
+@Table(name = "TBL_PACIENTE")
 
-public class Medico {
+public class Paciente {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private long id;
 
-    @Column(name = "nome", nullable = false, length = 50)
-    private String nome;
-
-    @Column(unique = true, nullable = false, length = 15)
-    private String crm;
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
     @NotBlank(message = "CPF é obrigatório")
     @Column(length = 11, unique = true)
@@ -32,6 +29,9 @@ public class Medico {
     @Column(nullable = false)
     private Date datanascimento;
 
+    @Column(name = "sexo", nullable = false)
+    private String sexo;
+
     public long getId() {
         return id;
     }
@@ -40,20 +40,12 @@ public class Medico {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCrm() {
-        return crm;
-    }
-
-    public void setCrm(String crm) {
-        this.crm = crm;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCpf() {
@@ -70,5 +62,13 @@ public class Medico {
 
     public void setDatanascimento(Date datanascimento) {
         this.datanascimento = datanascimento;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 }
