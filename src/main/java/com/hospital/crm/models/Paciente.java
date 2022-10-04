@@ -1,6 +1,7 @@
 package com.hospital.crm.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 
@@ -20,7 +21,6 @@ public class Paciente {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @NotBlank(message = "CPF é obrigatório")
     @Column(length = 11, unique = true)
     @CPF
     private String cpf;

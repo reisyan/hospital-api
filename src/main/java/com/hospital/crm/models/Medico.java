@@ -1,6 +1,7 @@
 package com.hospital.crm.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 
@@ -23,7 +24,6 @@ public class Medico {
     @Column(unique = true, nullable = false, length = 15)
     private String crm;
 
-    @NotBlank(message = "CPF é obrigatório")
     @Column(length = 11, unique = true)
     @CPF
     private String cpf;
@@ -31,6 +31,8 @@ public class Medico {
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false)
     private Date datanascimento;
+
+
 
     public long getId() {
         return id;
@@ -71,4 +73,6 @@ public class Medico {
     public void setDatanascimento(Date datanascimento) {
         this.datanascimento = datanascimento;
     }
+
+
 }
