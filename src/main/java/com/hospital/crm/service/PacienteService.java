@@ -10,16 +10,13 @@ import java.util.List;
 @Service
 public class PacienteService {
 
-    private final PacienteRepository repository;
-
-
     @Autowired
-    public PacienteService(PacienteRepository repository) {this.repository = repository;}
+    private PacienteRepository repository;
 
     public List<Paciente> findAll() {return repository.findAll();}
 
     public Paciente findById(Long id) {return repository.findById(id).get();}
-    
+
     public void deleteById(Long id) {repository.deleteById(id);}
 
     public Paciente create(Paciente paciente) {return repository.saveAndFlush(paciente);}

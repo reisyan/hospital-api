@@ -13,10 +13,8 @@ import java.util.List;
 @RequestMapping(value = "/api/paciente")
 public class PacienteController {
 
-    final PacienteService service;
-
     @Autowired
-    public PacienteController(PacienteService service) {this.service = service;} ;
+    private PacienteService service;
 
 
     @GetMapping
@@ -24,7 +22,6 @@ public class PacienteController {
     }
 
     @GetMapping("/{id}")
-
     public Paciente findById(@PathVariable Long id) {return service.findById(id);
     }
 
