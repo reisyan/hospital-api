@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -30,8 +31,10 @@ public class Medico {
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false)
-    private Date datanascimento;
+    private Date dataNascimento;
 
+    @OneToMany( mappedBy = "medico", fetch = FetchType.LAZY )
+    private List<Atendimento> atendimentos;
 
 
     public long getId() {
@@ -66,12 +69,12 @@ public class Medico {
         this.cpf = cpf;
     }
 
-    public Date getDatanascimento() {
-        return datanascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDatanascimento(Date datanascimento) {
-        this.datanascimento = datanascimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
 

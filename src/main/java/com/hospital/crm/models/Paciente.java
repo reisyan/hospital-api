@@ -6,12 +6,12 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "TBL_PACIENTE")
-
 public class Paciente {
 
     @Id
@@ -31,6 +31,10 @@ public class Paciente {
 
     @Column(name = "sexo", nullable = false)
     private String sexo;
+
+    @OneToMany( mappedBy = "paciente", fetch = FetchType.LAZY )
+    private List<Atendimento> atendimentos;
+
 
     public long getId() {
         return id;

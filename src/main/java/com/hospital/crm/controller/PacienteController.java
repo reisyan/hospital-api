@@ -16,7 +16,6 @@ public class PacienteController {
     @Autowired
     private PacienteService service;
 
-
     @GetMapping
     public List<Paciente> findAll() {return service.findAll();
     }

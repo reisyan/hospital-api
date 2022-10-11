@@ -10,7 +10,6 @@ import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "TBL_ATENDIMENTO")
-
 public class Atendimento {
 
     @Id
@@ -29,6 +28,15 @@ public class Atendimento {
 
     @Column( nullable = false, length = 50)
     private String observacao;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paciente_id", updatable = false, insertable = false)
+    private Paciente paciente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "medico", updatable = false, insertable = false)
+    private Medico medico ;
+
 
     public long getId() {
         return id;
