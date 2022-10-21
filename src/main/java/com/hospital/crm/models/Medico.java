@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 import java.util.Date;
 import java.util.List;
@@ -25,13 +26,14 @@ public class Medico {
     @Column(unique = true, nullable = false, length = 15)
     private String crm;
 
+    @NotBlank(message ="CPF obrigatorio")
     @Column(length = 11, unique = true)
     @CPF
     private String cpf;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(nullable = false)
-    private Date dataNascimento;
+    private Date datanascimento;
 
     @OneToMany( mappedBy = "medico", fetch = FetchType.LAZY )
     private List<Atendimento> atendimentos;
@@ -69,13 +71,9 @@ public class Medico {
         this.cpf = cpf;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+    public Date getDatanascimento() {return datanascimento;}
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDatanascimento(Date datanascimento) {this.datanascimento = datanascimento;
     }
-
 
 }

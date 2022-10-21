@@ -15,7 +15,7 @@ public class MedicoService {
 
     public List<Medico> findAll() {return medicoRepository.findAll();}
 
-    public Medico findById(Long id) {return medicoRepository.findById(id).get();}
+    public Medico findById(Long id) {return (Medico) medicoRepository.findById(id).get();}
 
     public void deleteById(Long id) {medicoRepository.deleteById(id);}
 
